@@ -21,13 +21,15 @@ const RedirectRoute = () => {
     } else if (shortId === "register") {
       return <Navigate to="/register" />;
     } else {
-      setDestination(redirectUrl(shortId));
+      redirectUrl(shortId).then((response) => {
+        console.log(response);
+      });
     }
   }, [destination, shortId, redirectUrl]);
 
-  useEffect(() => {
-    window.location.href = destination;
-  });
+  // useEffect(() => {
+  //   window.location.href = destination;
+  // });
 
   return destination ? <Loading center /> : <Error />;
 };
