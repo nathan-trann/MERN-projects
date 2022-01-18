@@ -153,7 +153,7 @@ const AppProvider = ({ children }) => {
   };
 
   const redirectUrl = async (shortId) => {
-    await axios
+    await authFetch
       .get(`/${shortId}`)
       .then((response) => {
         const { data } = response;

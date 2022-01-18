@@ -5,10 +5,11 @@ import {
   createShortUrl,
   getAllShortUrls,
   getSingleShortUrl,
+  handleRedirect,
 } from "../controllers/linkController.js";
 
 router.route("/shortUrl").post(createShortUrl).get(getAllShortUrls);
 
-router.route("/:shortUrl").get(getSingleShortUrl);
+router.route("/:shortUrl").get(getSingleShortUrl).get(handleRedirect);
 
 export default router;
