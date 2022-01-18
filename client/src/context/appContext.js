@@ -156,13 +156,8 @@ const AppProvider = ({ children }) => {
     await axios
       .get(`/api/v1/${shortId}`)
       .then((response) => {
-        const { data } = response;
-        console.log(data, "data");
-        console.log(data.url, "data.url");
-        const position = data.search("http");
-        const url = data.slice(position, "position");
-        console.log(url);
-        window.location.href = url;
+        const { fullUrl } = response.data.url;
+        return fullUrl;
       })
       .catch((err) => {
         if (err) {
