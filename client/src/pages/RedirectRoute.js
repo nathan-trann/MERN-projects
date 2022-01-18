@@ -21,6 +21,7 @@ const RedirectRoute = () => {
     }
     redirectUrl(shortId);
   }, [destination, shortId, redirectUrl]);
+  console.log(destination);
 
   if (shortId === "landing") {
     return <Navigate to="/landing" />;

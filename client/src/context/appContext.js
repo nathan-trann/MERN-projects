@@ -153,10 +153,12 @@ const AppProvider = ({ children }) => {
   };
 
   const redirectUrl = async (shortId) => {
-    await authFetch
-      .get(`/${shortId}`)
+    await axios
+      .get(`/api/v1/${shortId}`)
       .then((response) => {
+        console.log(response);
         const { data } = response;
+        console.log(data);
         const position = data.search("http");
         const url = data.slice(position);
         window.location.href = url;
