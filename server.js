@@ -44,7 +44,6 @@ app.use(cookieParser(process.env.JWT_SECRET));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1", authenticateUser, shortUrlRouter);
-app.use("/api/v1", handleRedirect);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
