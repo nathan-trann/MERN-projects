@@ -156,11 +156,12 @@ const AppProvider = ({ children }) => {
     await axios
       .get(`/api/v1/${shortId}`)
       .then((response) => {
-        console.log(response);
         const { data } = response;
-        console.log(data);
+        console.log(data, "data");
+        console.log(data.url, "data.url");
         const position = data.search("http");
-        const url = data.slice(position);
+        const url = data.slice(position, "position");
+        console.log(url);
         window.location.href = url;
       })
       .catch((err) => {
