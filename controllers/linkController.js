@@ -45,7 +45,8 @@ const getSingleShortUrl = async (req, res) => {
 };
 
 const handleRedirect = async (req, res) => {
-  let currentUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+  let currentUrl =
+    req.protocol + "s" + "://" + req.get("host") + req.originalUrl;
   if (req.params.shortUrl === "landing") {
     res.redirect(StatusCodes.OK, currentUrl);
   }
