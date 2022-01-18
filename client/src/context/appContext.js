@@ -153,13 +153,19 @@ const AppProvider = ({ children }) => {
   };
 
   const redirectUrl = async (shortId) => {
-    try {
-      const response = await axios.get(`/api/v1/redirect/${shortId}`);
-      console.log(response);
-    } catch (error) {
-      console.log(error.response.data.msg);
-      return false;
-    }
+    await axios
+      .get(`/api/v1/redirect/${shortId}`)
+      .then((response) => {
+        const { data } = response;
+        const position = data.search("http");
+        const url = data.slice(position);
+        window.location.href = url;
+      })
+      .catch((err) => {
+        if (err) {
+          return null;
+        }
+      });
   };
 
   const logoutUser = async () => {
