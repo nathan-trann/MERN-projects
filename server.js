@@ -34,9 +34,9 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-console.log(path.resolve(__dirname, "client/build", "index.html"));
+
 app.use(express.static(path.resolve(__dirname, "client/build")));
-app.use(favicon(__dirname + "/client/build/favicon.ico"));
+app.use(favicon(path.resolve(__dirname, "client/build", "favicon.ico")));
 
 app.use(express.json());
 app.use(helmet());
