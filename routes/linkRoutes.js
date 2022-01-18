@@ -10,6 +10,6 @@ import {
 
 router.route("/shortUrl").post(createShortUrl).get(getAllShortUrls);
 
-router.route("/:shortUrl").get(getSingleShortUrl).get(handleRedirect);
+router.route("/:shortUrl").get(getSingleShortUrl);
 
 export default router;
