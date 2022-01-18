@@ -45,14 +45,12 @@ const getSingleShortUrl = async (req, res) => {
 };
 
 const handleRedirect = async (req, res) => {
-  let currentUrl =
-    req.protocol + "s" + "://" + req.get("host") + req.originalUrl;
   if (req.params.shortUrl === "landing") {
-    res.redirect(StatusCodes.OK, currentUrl);
+    return (req.params.shortUrl = "landing");
   }
 
   if (req.params.shortUrl === "register") {
-    res.redirect(StatusCodes.OK, currentUrl);
+    return (req.params.shortUrl = "register");
   }
   const shortUrl = await ShortUrl.findOne({ shortUrl: req.params.shortUrl });
   if (!shortUrl) {
