@@ -154,9 +154,8 @@ const AppProvider = ({ children }) => {
 
   const redirectUrl = async (shortId) => {
     try {
-      const response = await axios.get(`/api/v1/${shortId}`);
-      const { fullUrl } = response.data.url;
-      return fullUrl;
+      const response = await axios.get(`/api/v1/redirect/${shortId}`);
+      console.log(response);
     } catch (error) {
       console.log(error.response.data.msg);
       return false;

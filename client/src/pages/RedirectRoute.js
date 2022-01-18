@@ -10,23 +10,22 @@ const RedirectRoute = () => {
   const { fetchSingleUrl, redirectUrl } = useAppContext();
 
   useEffect(() => {
-    if (shortId === "landing") {
-      return <Navigate to="/landing" />;
-    } else if (shortId === "register") {
-      return <Navigate to="/register" />;
-    } else {
-      redirectUrl(shortId).then((response) => {
-        setDestination(response);
-      });
-    }
-  }, [destination, shortId, redirectUrl]);
+    fetchSingleUrl(shortId).then((response) => {
+      setDestination(response);
+    });
+  }, [fetchSingleUrl, shortId]);
 
   useEffect(() => {
     if (!destination) {
       return;
+    } else if (shortId === "landing") {
+      return <Navigate to="/landing" />;
+    } else if (shortId === "register") {
+      return <Navigate to="/register" />;
+    } else {
+      redirectUrl(shortId);
     }
-    window.location.href = destination;
-  }, [destination]);
+  }, [destination, shortId, redirectUrl]);
 
   return destination ? <Loading center /> : <Error />;
 };
