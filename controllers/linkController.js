@@ -45,8 +45,14 @@ const getSingleShortUrl = async (req, res) => {
 };
 
 const handleRedirect = async (req, res) => {
-  const shortUrl = await ShortUrl.findOne({ shortUrl: req.params.shortUrl });
+  if (req.params.shortUrl === "landing") {
+    return;
+  }
 
+  if (req.params.shortUrl === "register") {
+    return;
+  }
+  const shortUrl = await ShortUrl.findOne({ shortUrl: req.params.shortUrl });
   if (!shortUrl) {
     throw new NotFoundError("URL does not exists");
   }
