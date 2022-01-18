@@ -173,6 +173,7 @@ const HomePage = styled.section`
   }
   .column4 {
     width: 6.8em;
+    text-align: center;
   }
 
   a {
@@ -196,7 +197,7 @@ const HomePage = styled.section`
     transition: var(--transition);
     position: absolute;
     left: 16rem;
-    margin-left: 1rem;
+    margin-left: 5rem;
   }
 
   .copy-label:hover {
