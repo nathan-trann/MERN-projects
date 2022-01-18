@@ -1,8 +1,11 @@
 import express from "express";
 const router = express.Router();
 
-import { handleRedirect } from "../controllers/linkController.js";
+import {
+  handleRedirect,
+  getSingleShortUrl,
+} from "../controllers/linkController.js";
 
-router.route("/:shortUrl").get(handleRedirect);
+router.route("/:shortUrl").get(getSingleShortUrl).get(handleRedirect);
 
 export default router;
