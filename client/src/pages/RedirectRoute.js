@@ -20,7 +20,13 @@ const RedirectRoute = () => {
       });
     }
   }, [destination, shortId, redirectUrl]);
-  console.log(destination);
+
+  useEffect(() => {
+    if (!destination) {
+      return;
+    }
+    window.location.href = destination;
+  }, [destination]);
 
   return destination ? <Loading center /> : <Error />;
 };
