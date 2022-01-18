@@ -1,5 +1,5 @@
 import { useAppContext } from "../context/appContext";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Error from "./Error";
 import { Loading } from "../components";
@@ -21,6 +21,14 @@ const RedirectRoute = () => {
     }
     redirectUrl(shortId);
   }, [destination, shortId, redirectUrl]);
+
+  if (shortId === "landing") {
+    return <Navigate to="/landing" />;
+  }
+
+  if (shortId === "register") {
+    return <Navigate to="/register" />;
+  }
 
   return destination ? <Loading center /> : <Error />;
 };
